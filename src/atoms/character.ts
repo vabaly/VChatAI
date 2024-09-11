@@ -1,13 +1,4 @@
 import { atom } from "jotai";
-
-export interface Character {
-  id: string;
-  name: string;
-  nickname: string;
-  slogan: string;
-  promptTemplate: string;
-  adaptSceneModes: string;
-  sound: string;
-}
+import { type Character } from "~/types";
 
 export const totalCharactersAtom = atom<Character[]>([]);

@@ -9,15 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@pixiv/three-vrm": "^3.1.1",
     "jotai": "^2.9.3",
     "next": "14.2.9",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "three": "^0.168.0"
   },
   "devDependencies": {
+    "@gltf-transform/core": "^4.0.8",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/three": "^0.168.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.9",
     "eslint-config-prettier": "^9.1.0",

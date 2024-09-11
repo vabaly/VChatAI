@@ -1,25 +1,7 @@
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { totalCharactersAtom } from "./character";
-
-enum SceneMode {
-  SingleCharacterMode = "SingleCharacterMode",
-  AlienMode = "AlienMode",
-}
-
-interface UserInfo {
-  singleCharacterId: string;
-  alienCharacterId: string;
-  alienTranslatorId: string;
-  sceneMode: SceneMode;
-  // Azure configs
-  azureSpeechKey: string;
-  azureSpeechRegion: string;
-  azureOpenAIApiKey: string;
-  azureOpenAIApiInstanceName: string;
-  azureOpenAIApiDeploymentName: string;
-  azureOpenAIApiVersion: string;
-}
+import { SceneMode, type UserInfo } from "~/types";
 
 export const userInfoAtom = atomWithStorage<Partial<UserInfo>>("userInfo", {});
 
