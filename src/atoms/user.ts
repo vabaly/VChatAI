@@ -2,8 +2,14 @@ import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { totalCharactersAtom } from "./character";
 import { SceneMode, type UserInfo } from "~/types";
+import { alienCharacters, singleCharacters } from "~/configs";
 
-export const userInfoAtom = atomWithStorage<Partial<UserInfo>>("userInfo", {});
+export const userInfoAtom = atomWithStorage<Partial<UserInfo>>("userInfo", {
+  sceneMode: SceneMode.SingleCharacterMode,
+  singleCharacterId: singleCharacters[0].id,
+  alienCharacterId: alienCharacters[0].id,
+  alienTranslatorId: singleCharacters[0].id,
+}, undefined, { getOnInit: true });
 
 export const updateUserInfoAtom = atom(null, (get, set, partialUser: Partial<UserInfo>) => {
   const userInfo = get(userInfoAtom);

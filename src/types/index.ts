@@ -41,8 +41,8 @@ export interface Character {
   name: string;
   nickname: string;
   slogan: string;
-  promptTemplate: string;
-  adaptSceneModes: string;
+  promptTemplate: PromptTemplateItem[];
+  adaptSceneModes: SceneMode[];
   sound: string;
 }
 

@@ -26,7 +26,7 @@ export class VRMAnimation {
   }
 
   public createAnimationClip(vrm: VRM): THREE.AnimationClip {
-    // 将有多个关键帧轨道合并起来播放动画
+    // Combine tracks with multiple keyframes to play the animation.
     const tracks: THREE.KeyframeTrack[] = [];
 
     tracks.push(...this.createHumanoidTracks(vrm));

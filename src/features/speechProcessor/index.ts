@@ -86,7 +86,7 @@ export async function speechProcessor({
     // Only return valid response.
     return responses.filter((item) => item.content && item.audio);
   } catch (error) {
-    console.log("error", error);
+    console.error("speechProcessor error", error);
     return [] as SpeechResponse[];
   }
 }

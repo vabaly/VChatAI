@@ -54,6 +54,9 @@ export function VoiceManagerInner ({
       });
       if (!responses.length) {
         setIsForcePause(false);
+        if (sceneMode === SceneMode.AlienMode) {
+          viewer.models[0]?.model.stopLoopSpeakCosmicLanguage();
+        }
         return;
       }
 
@@ -111,7 +114,7 @@ export function VoiceManagerInner ({
   return null;
 }
 
-export function VoiceManager() {
+export default function VoiceManager() {
   const [mediaStream, setMediaStream] = useState<MediaStream>();
   const setMicAnalyserNodeAtom = useSetAtom(micAnalyserNodeAtom);
 

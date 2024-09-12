@@ -5,7 +5,7 @@ import { type VRMAnimation } from "../VRMAnimation/VRMAnimation";
 import { VRMLookAtSmootherLoaderPlugin } from "../VRMLookAtSmootherLoaderPlugin/VRMLookAtSmootherLoaderPlugin";
 import { LipSync } from "../lipSync/lipSync";
 import { EmoteController } from "../emoteController/emoteController";
-import { type VRMGLTF, type LoaderHooks, type VRMFaceExpressionName } from "~/types";
+import { type VRMGLTF, type LoaderHooks, type VRMFaceExpressionName, type Character, SceneMode } from "~/types";
 import { characterAudioUrl, characterUrl } from "~/utils";
 
 /**
@@ -29,8 +29,8 @@ export class Model {
   }
 
   // 2. Load
-  public async loadVRM(characterName: string, hooks?: LoaderHooks): Promise<void> {
-    const url = characterUrl(characterName);
+  public async loadVRM(character: Character, hooks?: LoaderHooks): Promise<void> {
+    const url = characterUrl(character.name);
     const loader = new GLTFLoader();
     loader.register(
       (parser) =>
@@ -53,7 +53,9 @@ export class Model {
 
     this.emoteController = new EmoteController(vrm, this._lookAtTargetParent);
 
-    this.loadCosmicAudios(characterName);
+    if (character.adaptSceneModes.length === 1 && character.adaptSceneModes.includes(SceneMode.AlienMode)) {
+      this.loadCosmicAudios(character.name);
+    }
   }
 
   public unloadVRM() {

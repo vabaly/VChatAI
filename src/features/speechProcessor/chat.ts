@@ -4,7 +4,7 @@ import { InMemoryChatMessageHistory } from "@langchain/core/chat_history";
 import { HumanMessage } from "@langchain/core/messages";
 import { AIMessagePromptTemplate, ChatPromptTemplate, HumanMessagePromptTemplate, MessagesPlaceholder } from "@langchain/core/prompts";
 import { RunnableWithMessageHistory, type RunnableLike } from "@langchain/core/runnables";
-import { type SceneMode, type Character, type PromptTemplateList } from "~/types";
+import { type SceneMode, type Character } from "~/types";
 import { formatPrompt } from "~/utils";
 
 // Prompts added to the end of character prompts.
@@ -25,7 +25,7 @@ export interface ChatParams {
 
 function getPrompts(character: Character) {
   const { promptTemplate } = character;
-  const rawPrompts = promptTemplate as unknown as PromptTemplateList;
+  const rawPrompts = promptTemplate;
 
   const prompts = rawPrompts.map(({ role, content }) => {
     const fullContent = content + PROMPT_END;

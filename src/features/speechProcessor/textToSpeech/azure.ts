@@ -22,7 +22,8 @@ export async function azureTextToSpeech(
     subscriptionKey,
     region,
   );
-  const speechSynthesizer = new sdk.SpeechSynthesizer(speechConfig);
+  // const audioConfig = sdk.AudioConfig.fromSpeakerOutput()
+  const speechSynthesizer = new sdk.SpeechSynthesizer(speechConfig, null as unknown as sdk.AudioConfig);
 
   // https://learn.microsoft.com/zh-cn/azure/ai-services/speech-service/speech-synthesis-markup-voice
   const azureExpression = VRM_TO_AZURE_EXPRESSION[expression];
@@ -48,7 +49,7 @@ export async function azureTextToSpeech(
         resolve(result.audioData);
       },
       (error) => {
-        console.log("speakSsmlAsync", error);
+        console.error("speakSsmlAsync", error);
         reject(error);
         speechSynthesizer.close();
       },
